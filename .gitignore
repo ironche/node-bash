@@ -1,0 +1,13 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Dependencies
+node_modules/
+npm-debug.log
+
+# IDEs and editors
+.idea/
+.vscode/
+
+# Filesystem
+.DS_Store
+Thumbs.db
