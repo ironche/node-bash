@@ -43,19 +43,24 @@ export function PreparedCommand() {
     findCmd += ` ${startPath || '.'}`;
 
     // STEP
-    const excludeFolders = (ignoredFolders || [])
-      .map((v) => `-path "${v}" -prune`)
-      .join(' -o ');
+    const excludeFolders = (ignoredFolders || []).map((v) => `-path "${v}" -prune`).join(' -o ');
     if (excludeFolders) {
       findCmd += ` ${excludeFolders} -o`;
     }
 
     // STEP
-    const type = (descriptor && /^[df]$/.test(descriptor)) ? descriptor : 'f';
+    const type = descriptor && /^[df]$/.test(descriptor) ? descriptor : 'f';
     findCmd += ` -type ${type}`;
 
     // STEP
-    findCmd += ` -name "${pattern || '*'}" -print`;
+    if (!Array.isArray(pattern)) {
+      pattern = [pattern || '*'];
+    }
+    let targets = pattern.map((v) => `-name "${v}"`).join(' -o ');
+    if (pattern.length > 1) {
+      targets = `"(" ${targets} ")"`;
+    }
+    findCmd += ` ${targets} -print`;
 
     addToStore(findCmd);
     return this;
