@@ -1,25 +1,26 @@
 {
-  "plugins": [
-    "jasmine"
-  ],
+  "root": true,
   "env": {
+    "jasmine": true,
     "browser": false,
     "es6": true,
-    "node": true,
-    "jasmine": true
+    "node": true
   },
   "extends": [
-    "airbnb-base"
+    "eslint:recommended",
+    "plugin:jasmine/recommended",
+    "plugin:prettier/recommended"
   ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2020
   },
+  "plugins": [
+    "jasmine",
+    "prettier"
+  ],
   "rules": {
-    "import/prefer-default-export": "off"
+    "jasmine/no-expect-in-setup-teardown": "off",
+    "prettier/prettier": "error"
   }
 }
