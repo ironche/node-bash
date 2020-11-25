@@ -13,3 +13,7 @@ export function buildTask() {
     .pipe(uglify())
     .pipe(dest(config.distPath));
 }
+
+export function copyMetaTask() {
+  return src([`package.json`, `*.md`]).pipe(dest(config.distPath));
+}
