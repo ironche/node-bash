@@ -1,6 +1,20 @@
 {
-  "name": "node-bash",
+  "name": "@ironche/node-bash",
   "version": "1.0.0",
+  "description": "bash-like commands in nodejs",
+  "keywords": [
+    "bash",
+    "shell",
+    "commands"
+  ],
+  "homepage": "https://github.com/ironche/node-bash",
+  "license": "ISC",
+  "author": "Milos Manojlovic",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ironche/node-bash.git"
+  },
   "scripts": {
     "start": "npm run lint && npm test",
     "build": "gulp build",
@@ -12,7 +26,6 @@
     "bump:minor": "npm run bump -- minor",
     "bump:major": "npm run bump -- major"
   },
-  "private": true,
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
