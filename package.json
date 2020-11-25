@@ -10,7 +10,7 @@
   "homepage": "https://github.com/ironche/node-bash",
   "license": "ISC",
   "author": "Milos Manojlovic",
-  "main": "./dist/index.js",
+  "main": "./dist/index",
   "repository": {
     "type": "git",
     "url": "https://github.com/ironche/node-bash.git"
