@@ -14,7 +14,7 @@ export function find(path, descriptor, namePatterns, excludeFolders, results) {
     const isPatternMatched = namePatterns.length ? namePatterns.some((i) => i.test(item)) : true;
 
     if (stat.isDirectory()) {
-      if (!excludeFolders.some((i) => i.test(itemPath))) {
+      if (!excludeFolders.some((i) => i.test(item))) {
         if (isPatternMatched && ['*', 'd'].includes(descriptor)) {
           results.push({
             name: item,
