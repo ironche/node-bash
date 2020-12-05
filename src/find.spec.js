@@ -102,10 +102,30 @@ describe('find', () => {
     });
   });
 
+  describe('respecting traverse depth', () => {
+    it('should find all files and folders on a root level only', () => {
+      const result = find(null, null, null, null, 0);
+
+      expect(result.length).toBe(5);
+    });
+
+    it('should find all files and folders down to one level', () => {
+      const result = find(null, null, null, null, 1);
+
+      expect(result.length).toBe(10);
+    });
+
+    it('should find all files and folders with unlimited depth', () => {
+      const result = find();
+
+      expect(result.length).toBe(15);
+    });
+  });
+
   describe('combining multiple calls', () => {
     it('should append results', () => {
       const result1 = find('./src', '*', null, /assets/);
-      const result2 = find('./src', '*', null, /assets/, [...result1]);
+      const result2 = find('./src', '*', null, /assets/, null, [...result1]);
 
       expect(result2.length).toBe(result1.length * 2);
     });

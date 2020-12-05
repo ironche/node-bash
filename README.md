@@ -18,10 +18,11 @@ Traverse file system and search for files and folders recursively.
 
 | Argument | Description |
 | -------- | ----------- |
-| path  | Folder from where the search begins. If omitted, default value is current folder, which is identical to './' |
-| descriptor | Pass 'f' to search only for files, 'd' to search only for folders/directories, or null (anything else) if search applies to both |
-| namePatterns | Regular expression (or array of regular expressions) to match names of files and folders and return them as result |
-| excludeFolders | Regular expression (or array of regular expressions) to exclude folders and their contents from search results |
+| path  | Folder from where the search begins. If omitted, the default value is the current folder, which is identical to './' |
+| descriptor | Pass 'f' to search only for files, 'd' to search only for folders/directories, or null (anything else) if the search applies to both. |
+| namePatterns | Regular expression (or array of regular expressions) to match names of files and folders and return them as result. Matches all names if omitted. |
+| excludeFolders | Regular expression (or array of regular expressions) to exclude folders and their contents from search results. |
+| depth | Used to limit the depth while traversing file system. Set to 0 to search only current level without entering any folders, 1 to go down one level, and so on. If omitted, traverses whole folder tree. |
 
 **Return value**: array of objects found.
 

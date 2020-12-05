@@ -1,11 +1,12 @@
 import fs from 'fs';
+import { normaliseArrayArg } from './helpers';
 
-export function find(path, descriptor, namePatterns, excludeFolders, results) {
-  const normaliseArrayArg = (arg) => (arg && !Array.isArray(arg) ? [arg] : arg || []);
+export function find(path, descriptor, namePatterns, excludeFolders, depth, results) {
   path = path || '.';
   namePatterns = normaliseArrayArg(namePatterns);
   descriptor = /^[df]$/.test(descriptor) ? descriptor : '*';
   excludeFolders = normaliseArrayArg(excludeFolders);
+  depth = Number.isInteger(depth) ? depth : Number.MAX_SAFE_INTEGER;
   results = results || [];
 
   for (const item of fs.readdirSync(path, 'utf8')) {
@@ -22,7 +23,9 @@ export function find(path, descriptor, namePatterns, excludeFolders, results) {
             info: stat,
           });
         }
-        find(itemPath, descriptor, namePatterns, excludeFolders, results);
+        if (depth) {
+          find(itemPath, descriptor, namePatterns, excludeFolders, depth - 1, results);
+        }
       }
     } else {
       if (isPatternMatched && ['*', 'f'].includes(descriptor)) {
