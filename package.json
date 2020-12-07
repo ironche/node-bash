@@ -8,7 +8,7 @@
     "commands"
   ],
   "homepage": "https://github.com/ironche/node-bash#readme",
-  "license": "ISC",
+  "license": "MIT",
   "author": "Milos Manojlovic",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-uglify": "^3.0.2",
-    "husky": "^4.3.4",
+    "husky": "^4.3.5",
     "jasmine": "^3.6.3",
     "prettier": "^2.2.1"
   }

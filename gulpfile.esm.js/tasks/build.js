@@ -15,5 +15,5 @@ export function buildTask() {
 }
 
 export function copyMetaTask() {
-  return src([`package.json`, `*.md`]).pipe(dest(config.distPath));
+  return src([`package.json`, `*.md`, `LICENSE`]).pipe(dest(config.distPath));
 }
