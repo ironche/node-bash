@@ -24,11 +24,8 @@ install:
   - npm -v
   - npm ci
 
-build: off
+build_script:
+  - gulp build
 
 test_script:
-  - npm run lint:fix
-  - npm run build
-
-on_success:
-  - echo Success
+  - npm test
