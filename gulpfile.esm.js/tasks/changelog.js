@@ -11,6 +11,7 @@ export function changelogTask(cb) {
       const packageJson = fs.readJSONSync('package.json', 'utf8');
       const reader = fs.createReadStream(changelog, 'utf8');
       const writer = fs.createWriteStream(changelogTemp, 'utf8');
+
       reader
         .pipe(addCommits(packageJson, commits))
         .pipe(writer)
@@ -45,14 +46,16 @@ function addCommits(packageJson, commits) {
 }
 
 function parseGitLog(shellOutput) {
-  return shellOutput.stdout.split('\n').sort((first, second) => {
-    const a = commitType(first);
-    const b = commitType(second);
+  return [...new Set(shellOutput.stdout.split('\n'))]
+    .filter((line) => !/^merge/i.test(line))
+    .sort((first, second) => {
+      const a = commitType(first);
+      const b = commitType(second);
 
-    if (a < b) return -1;
-    if (a > b) return 1;
-    return 0;
-  });
+      if (a < b) return -1;
+      if (a > b) return 1;
+      return 0;
+    });
 
   function commitType(str) {
     return str.slice(0, str.indexOf(':'));
