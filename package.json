@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "npm run lint && npm test",
-    "build": "npm run lint && npm test && gulp build",
+    "build": "gulp build",
     "test": "jasmine --config=jasmine.json",
     "lint": "eslint gulpfile.esm.js/** src/**",
     "lint:fix": "npm run lint -- --fix",
