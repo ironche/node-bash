@@ -57,17 +57,17 @@ SpecReporter.prototype.suiteDone = function (result) {
 
   if (tests) {
     for (const i of suite.specs) {
-      out += `    <testcase name="${i.name}" time="${i.time}">\n`;
+      out += `    <testcase name="${i.name}" time="${i.time / 1000}">`;
       if (i.failures.length) {
-        tests--;
+        // tests--;
         failures++;
         for (const e of i.failures) {
-          out += `      <failure message="${e.message}" type="ERROR"></failure>\n`;
+          out += `\n      <failure message="${e.message}" type="ERROR"></failure>\n    `;
         }
       }
-      out += `    </testcase>\n`;
+      out += `</testcase>\n`;
     }
-    out = `  <testsuite name="${result.fullName}" tests="${tests}" failures="${failures}" time="${result.duration}">\n${out}`;
+    out = `  <testsuite name="${result.fullName}" tests="${tests}" failures="${failures}" time="${result.duration / 1000}">\n${out}`;
     out += `  </testsuite>\n`;
     this.output.write(out);
   }
