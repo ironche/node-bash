@@ -29,4 +29,6 @@ test_script:
   - npm run test
 
 on_finish:
-  - curl -F 'file=@test-output.xml' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
+  - ls -l
+  - pwd
+  # - curl -F 'file=@test-output.xml' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
