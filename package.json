@@ -17,8 +17,8 @@
   "scripts": {
     "start": "npm run lint && npm test",
     "build": "gulp build",
-    "test": "jasmine --config=jasmine.json",
-    "lint": "eslint gulpfile.esm.js/** src/**",
+    "test": "node -r esm test",
+    "lint": "eslint gulpfile.esm.js/** src/** test.js",
     "lint:fix": "npm run lint -- --fix",
     "version": "gulp version && git add CHANGELOG.md",
     "predeploy": "npm run build",

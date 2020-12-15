@@ -20,8 +20,6 @@ matrix:
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  - node -v
-  - npm -v
   - npm ci
 
 build_script:
@@ -29,3 +27,7 @@ build_script:
 
 test_script:
   - npm run test
+
+on_finish:
+  - sh: |
+      find "$APPVEYOR_BUILD_FOLDER" -type f -name 'test-output.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"

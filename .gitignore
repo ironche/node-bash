@@ -13,3 +13,4 @@ Thumbs.db
 # Build
 dist/
 coverage/
+test-output.xml
