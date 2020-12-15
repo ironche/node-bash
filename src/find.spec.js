@@ -20,7 +20,7 @@ describe('find', () => {
     it('should find all files and folders', () => {
       const result = find();
 
-      expect(result.length).not.toBe(15);
+      expect(result.length).toBe(15);
     });
 
     it('should find all files', () => {

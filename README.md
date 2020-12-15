@@ -3,6 +3,7 @@
 This project aims to provide NodeJS implementation of frequently used BASH commands and extend their functionality even further.
 
 ![AppVeyor](https://img.shields.io/appveyor/build/ironche/node-bash?logo=appveyor)
+![AppVeyor tests](https://img.shields.io/appveyor/tests/ironche/node-bash?logo=appveyor)
 ![npm](https://img.shields.io/npm/dm/@ironche/node-bash?logo=npm)
 
 ## Installation

@@ -23,10 +23,10 @@ install:
   - npm ci
 
 build_script:
-  - npm run build
+  - npm run build:ci
 
 test_script:
-  - npm run test
+  - npm run test:ci
 
 after_test:
   - ps: |
