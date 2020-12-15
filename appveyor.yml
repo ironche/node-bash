@@ -24,12 +24,13 @@ install:
 
 build_script:
   - npm run build
-  - echo build APPVEYOR_JOB_ID $APPVEYOR_JOB_ID
+  - echo build APPVEYOR_JOB_ID $APPVEYOR
 
 test_script:
   - npm run test
 
 on_finish:
-  - sh: echo finish APPVEYOR_JOB_ID $APPVEYOR_JOB_ID
+  - sh: |
+      echo finish APPVEYOR_JOB_ID $APPVEYOR_JOB_ID
   - ls -l
   # - curl -F 'file=@test-output.xml' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
