@@ -12,6 +12,11 @@ This project aims to provide NodeJS implementation of frequently used BASH comma
 npm install @ironche/node-bash
 ```
 
+## Contents
+
+- **find** - search for files and folders in a folder hierarchy
+- **grep** - find files containing patterns
+
 # Function find()
 
 Traverse file system and search for files and folders recursively.
@@ -57,6 +62,38 @@ console.log(results);
 [
   './package-lock.json',
   './package.json'
+]
+*/
+```
+
+# Function grep()
+
+Read files and return those containing matched patterns.
+
+## Syntax
+
+**Note**: All arguments are optional.
+
+| Argument | Description |
+| -------- | ----------- |
+| patterns  | Regular expression (or array of regular expressions) to match content of files and return files as result. Doesn't match any file if omitted. |
+| files | Array of files found by using **find** function. |
+
+**Return value**: array of files that contain given patterns.
+
+```js
+import { find, grep } from '@ironche/node-bash';
+
+// find all files having extension "css"
+const files = find('.', 'f', /\.css$/, /node_modules/);
+// among supplied files, return only those containing text "white"
+const results = grep(/white/, files);
+console.log(results);
+
+/* example output
+[
+  './theme-light.css',
+  './button.css',
 ]
 */
 ```
